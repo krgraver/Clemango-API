@@ -24,6 +24,6 @@ app.post('/uploads/getOne', uploadController.getUpload);
 app.post('/uploads/post', uploadController.postUpload);
 
 
-app.listen('3001', function() {
+app.listen('5000', function() {
 	console.log("clemango-server is running");
 });
