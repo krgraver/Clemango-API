@@ -1,5 +1,5 @@
 {
-  "name": "clemango-server",
+  "name": "clemango-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
