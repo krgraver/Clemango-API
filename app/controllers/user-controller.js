@@ -21,8 +21,7 @@ module.exports.signUpUser = function(req, res) {
 	newUser.save();
 
 	var myToken = jwt.sign({
-			"iss": "clemango.com",
-			"exp": 86400
+			"iss": "clemango.com"
 		}, 'clemangos are juicy');
 	res.json(myToken);
 }
