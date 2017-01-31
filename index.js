@@ -8,7 +8,8 @@ var uploadController = require('./app/controllers/upload-controller');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/clemango');
+var constant = require('./app/config/constants')
+mongoose.connect(constant.MONGODB_URI);
 
 app.use(bodyParser.json());
 app.use(expressJWT({ secret: 'clemangos are juicy' })
