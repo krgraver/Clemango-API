@@ -1,4 +1,4 @@
-var Upload = require('../models/uploads');
+var Upload = require('../models/upload-model');
 var AWS = require('aws-sdk');
 var fs = require('fs');
 

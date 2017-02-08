@@ -3,8 +3,17 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcryptjs');
 
 var UserSchema = new Schema({
-	email: String,
-	password: String
+	email: { type: String, lowercase: true, trim: true, unique: true, required: true },
+	password: { type: String, required: true },
+	avatar: Object,
+	firstName: String,
+	lastName: String,
+	jobTitle: String,
+	company: String,
+	bio: String,
+	karmaPoints: Number,
+	_groups: { Schema.Types.ObjectId, ref: 'Group' },
+	_uploads: { Schema.Types.ObjectId, ref: 'Upload' }
 });
 
 UserSchema.pre('save', function(next) {

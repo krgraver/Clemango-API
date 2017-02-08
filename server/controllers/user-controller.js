@@ -1,5 +1,5 @@
 var jwt = require('jsonwebtoken');
-var User = require('../models/users');
+var User = require('../models/user-model');
 
 module.exports.logInUser = function(req, res) {
 	User.findOne({email: req.body.email}, function(err, user) {
@@ -10,7 +10,10 @@ module.exports.logInUser = function(req, res) {
 				var myToken = jwt.sign({
 						"iss": "clemango.com"
 					}, 'clemangos are juicy');
-				res.json(myToken);
+				res.json({
+					_id: user._id,
+					token: myToken
+				});
 			}
 		});
 	});

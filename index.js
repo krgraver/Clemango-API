@@ -24,7 +24,6 @@ app.post('/signup', userController.signUpUser);
 app.get('/uploads/getAll', uploadController.getAllUploads);
 app.post('/uploads/getOne', uploadController.getUpload);
 app.post('/uploads/post', uploadController.postUpload);
-// app.post('/uploads/image', uploadController.getSignedUrl);
 app.post('/uploads/image', multipartMiddleware, uploadController.postImage);
 
 
