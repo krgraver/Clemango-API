@@ -10,7 +10,7 @@ module.exports.logInUser = function(req, res) {
 				var myToken = jwt.sign({
 						"iss": "clemango.com"
 					}, 'clemangos are juicy');
-				res.json({
+				res.send({
 					_id: user._id,
 					token: myToken
 				});
