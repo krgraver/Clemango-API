@@ -11,7 +11,7 @@ AWS.config.update({
 module.exports.getFirstPublicUploads = function(req, res) {
 	Upload.find({isPublic: true})
 		.sort({timestamp: -1})
-		.limit(36)
+		.limit(24)
 		.populate('_createdBy')
 		.exec(function(err, uploads) {
 			if (err) {
@@ -28,7 +28,7 @@ module.exports.getNextPublicUploads = function(req, res) {
 	Upload.find({isPublic: true})
 		.sort({timestamp: -1})
 		.skip(skip)
-		.limit(36)
+		.limit(24)
 		.populate('_createdBy')
 		.exec(function(err, uploads) {
 			if (err) {
