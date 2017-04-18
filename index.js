@@ -46,7 +46,6 @@ app.use(expressJWT({ secret: process.env.JWT_SECRET })
 						'/uploads/getFirstPublicUploads',
 						'/uploads/getNextPublicUploads',
 						'/uploads/searchPublic',
-						'/uploads/getNextSearchedUploads',
 						'/uploads/checkUpload',
 						'/uploads/getUpload',
 						'/uploads/getFirstUserPublicUploads',
@@ -79,7 +78,6 @@ app.post('/user/addSuggestedEmails', userController.addSuggestedEmails);
 app.get('/uploads/getFirstPublicUploads', uploadController.getFirstPublicUploads);
 app.post('/uploads/getNextPublicUploads', uploadController.getNextPublicUploads);
 app.post('/uploads/searchPublic', uploadController.searchPublicUploads);
-app.post('/uploads/getNextSearchedUploads', uploadController.getNextSearchedUploads);
 app.post('/uploads/checkUpload', uploadController.checkUpload);
 app.post('/uploads/getUpload', uploadController.getUpload);
 app.post('/uploads/signUpload', uploadController.signUpload);

@@ -11,7 +11,7 @@ AWS.config.update({
 module.exports.getFirstPublicUploads = function(req, res) {
 	Upload.find({isPublic: true})
 		.sort({timestamp: -1})
-		.limit(12)
+		.limit(36)
 		.populate('_createdBy')
 		.exec(function(err, uploads) {
 			if (err) {
@@ -28,7 +28,7 @@ module.exports.getNextPublicUploads = function(req, res) {
 	Upload.find({isPublic: true})
 		.sort({timestamp: -1})
 		.skip(skip)
-		.limit(12)
+		.limit(36)
 		.populate('_createdBy')
 		.exec(function(err, uploads) {
 			if (err) {
@@ -42,23 +42,6 @@ module.exports.getNextPublicUploads = function(req, res) {
 module.exports.searchPublicUploads = function(req, res) {
 	Upload.find({isPublic: true, $text: {$search: req.body.searchValue}})
 		.sort({timestamp: -1})
-		.populate('_createdBy')
-		.exec(function(err, uploads) {
-			if (err) {
-				console.log(err);
-			} else {
-				res.json(uploads);
-			}
-		});
-};
-
-module.exports.getNextSearchedUploads = function(req, res) {
-	var skip = Number(req.body.skipAmount);
-
-	Upload.find({isPublic: true, $text: {$search: req.body.searchValue}})
-		.sort({timestamp: -1})
-		.skip(skip)
-		.limit(12)
 		.populate('_createdBy')
 		.exec(function(err, uploads) {
 			if (err) {
