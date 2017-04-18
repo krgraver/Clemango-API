@@ -80,15 +80,12 @@ module.exports.resetPassword = function(req, res) {
 	var decodedToken = jwtDecode(req.body.token),
 		newPassword = req.body.newPassword;
 
-	// generate a salt
 	bcrypt.genSalt(10, function(err, salt) {
 	    if (err) return next(err);
 
-	    // hash the password using our new salt
 	    bcrypt.hash(newPassword, salt, function(err, hash) {
 	        if (err) return next(err);
 
-	        // override the cleartext password with the hashed one
 	        newPassword = hash;
 
 	        User.update({email: decodedToken.email},
@@ -166,6 +163,46 @@ module.exports.saveUserSetup = function(req, res) {
 			res.send('User updated');
 	});
 };
+
+module.exports.changePassword = function(req, res) {
+	let currentUser = req.body.currentUser,
+		currentPassword = req.body.currentPassword,
+		newPassword = req.body.newPassword;
+
+	User.findOne({_id: currentUser}, function(err, user) {
+		if (err) {
+			console.log(err);
+		} else {
+			user.comparePassword(currentPassword, function(err, isMatch) {
+				if (!isMatch) {
+					res.json({
+						error: "invalid"
+					});
+				} else {
+					bcrypt.genSalt(10, function(err, salt) {
+					    if (err) return next(err);
+
+					    bcrypt.hash(newPassword, salt, function(err, hash) {
+					        if (err) return next(err);
+
+					        newPassword = hash;
+
+					        User.update({_id: currentUser},
+								{$set: {
+									password: newPassword
+								}},
+								function() {
+									res.json({
+										message: "OK"
+									});
+							});
+					    });
+					});
+				}
+			});
+		}
+	});
+}
 
 module.exports.deleteUser = function(req, res) {
 	User.find({_id: req.body.user})

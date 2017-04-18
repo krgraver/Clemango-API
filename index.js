@@ -63,6 +63,7 @@ app.post('/user/checkEmail', userController.checkEmail);
 app.post('/user/signup', userController.signUpUser);
 app.post('/user/signUser', userController.signUserImage);
 app.put('/user/saveSetup', userController.saveUserSetup);
+app.post('/user/changePassword', userController.changePassword);
 app.post('/user/deleteUser', userController.deleteUser);
 app.post('/user/checkUser', userController.checkUser);
 app.post('/user/getUser', userController.getUserInfo);
