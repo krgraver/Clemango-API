@@ -312,7 +312,7 @@ module.exports.sendEmailInvitation = function(req, res) {
 	        "sender_name": req.body.sender,
 	        "upload_title": req.body.uploadTitle,
 	        "image_url": req.body.imageUrl,
-	        "action_url": "localhost:3000/uploads/" + req.body.uploadId
+	        "action_url": "https://clemango.herokuapp.com/uploads/" + req.body.uploadId
 	    }
 	});
 
