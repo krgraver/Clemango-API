@@ -69,7 +69,7 @@ module.exports.sendPasswordReset = function(req, res) {
 	    "To": req.body.email, 
 	    "TemplateModel": {
 	        "name": req.body.firstName,
-	        "action_url": "https://clemango.herokuapp.com/reset/" + resetToken
+	        "action_url": "http://www.clemango.com/reset/" + resetToken
 	    }
 	});
 

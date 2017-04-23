@@ -16,7 +16,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI);
 
 app.use(function (req, res, next) {
-	var allowedOrigins = ['https://clemango.herokuapp.com', 'http://clemango.herokuapp.com', 'http://localhost:3000'];
+	var allowedOrigins = ['http://www.clemango.com', 'https://clemango.herokuapp.com', 'http://clemango.herokuapp.com', 'http://localhost:3000'];
 	var origin = req.headers.origin;
 
 	if (allowedOrigins.indexOf(origin) > -1) {
